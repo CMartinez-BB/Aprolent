@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/about.css">
+    <link rel="stylesheet" href="../assets/css/about.css">
     <title>Acerca de nosotros</title>
 </head>
 
@@ -76,7 +76,7 @@
             </div>
 
             <div class="butt">
-                <a href="/index.html?#contac" class="button-contac">Contactanos</a>
+                <a href="/index.php?#contac" class="button-contac">Contactanos</a>
             </div>
         </div>
     </div>

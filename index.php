@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styles/styles-home.css">
+    <link rel="stylesheet" href="assets/css/styles-home.css">
     <title>DeveroCode</title>
 </head>
 
@@ -46,7 +46,7 @@
 
             <div class="web">
 
-                <img id="nav-web" src="imgs/iCons/pantalla.png" alt="">
+                <img id="nav-web" src="assets/imgs/iCons/pantalla.png" alt="">
                 <h3 style="font-weight:bolder;">SITIOS WEB</h3>
                 <span id="cristo" style="color: #575757; font-weight: bolder;">
                     Desarrollamos tus ideas justo como lo tengas en mente. Utilizando la mejor tecnología.
@@ -55,7 +55,7 @@
 
             <div class="Elige-frelancer">
 
-                <img id="nav-web" src="imgs/iCons/programacion.png" alt="">
+                <img id="nav-web" src="assets/imgs/iCons/programacion.png" alt="">
                 <h3 style="font-weight:bolder;"> PROGRAMACION</h3>
                 <span id="text-frelancer" style="color: #575757; font-weight: bolder;">
                     Manejamos cualquier tipo de software que pueda facilitar el trabajo. Desde bases de datos hasta
@@ -68,7 +68,7 @@
 
             <div class="movil-res">
 
-                <img id="responsive-img" src="imgs/iCons/responsive.png" alt="">
+                <img id="responsive-img" src="assets/imgs/iCons/responsive.png" alt="">
                 <h3 style="font-weight:bolder;">RESPONSIVE</h3>
                 <span id="text-movil" style="color: #575757; font-weight: bolder;">
                    Desarrollamos aplicaiones web hechas a la medida. Recibe de nosotros una solución para su negocio
@@ -89,7 +89,7 @@
 
 
             <figure>
-                <img id="app-movil" src="imgs/Work/App movil.jpg" alt="">
+                <img id="app-movil" src="assets/imgs/Work/App movil.jpg" alt="">
 
                 <div class="title">
                     <span class="span-text val-1" style="font-size: 1.2em; font-weight: bold;">App móvil
@@ -102,7 +102,7 @@
             </figure>
 
             <figure>
-                <img id="app-movil" src="imgs/Work/billetera.png" alt="">
+                <img id="app-movil" src="assets/imgs/Work/billetera.png" alt="">
 
                 <div class="title">
                     <span class="span-text val-1" style="font-size: 1.2em; font-weight: bold;">Wallet
@@ -115,7 +115,7 @@
             </figure>
 
             <figure>
-                <img id="app-movil" src="imgs/Work/comercio.png" alt="">
+                <img id="app-movil" src="assets/imgs/Work/comercio.png" alt="">
 
                 <div class="title">
                     <span class="span-text val-1" style="font-size: 1.2em; font-weight: bold;">Tienda

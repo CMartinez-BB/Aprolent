@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <title>Diseño Web</title>
 </head>
 
@@ -47,23 +47,23 @@
                 <h2 id="centrame">Soporte y asesoría</h2>
 
 
-                <img src="../imgs/iCons/soporte.png" alt="">
+                <img src="../assets/imgs/iCons/soporte.png" alt="">
             </div>
 
             <div class="sop">
                 <h2 class="re-size">Alojamiento y <br> dominio</h2>
-                <img class="size" src="../imgs/iCons/dominio.png" alt="">
+                <img class="size" src="../assets/imgs/iCons/dominio.png" alt="">
             </div>
 
             <div class="sop">
                 <h2 class="re-size">Formulario de <br> contacto</h2>
-                <img class="size" src="../imgs/iCons/formulario.png" alt="">
+                <img class="size" src="../assets/imgs/iCons/formulario.png" alt="">
             </div>
 
 
             <div class="sop">
                 <h2 class="re-zise" style="margin-bottom: -23px;">Aplicaciones web <br> para móviles</h2>
-                <img class="size" src="../imgs/iCons/app movil.png" alt="">
+                <img class="size" src="../assets/imgs/iCons/app movil.png" alt="">
             </div>
         </div>
     </section>

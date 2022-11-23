@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/styles.css">
-    <link rel="stylesheet" href="../Styles/progra.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/progra.css">
     <title>Programación</title>
 </head>
 
@@ -37,7 +37,7 @@
     <section class="main-container">
 
         <div class="img"
-            style="background-image: url(../imgs/wallpapers/programacion-2.png) !important; background-position: center;">
+            style="background-image: url(../assets/imgs/wallpapers/programacion-2.png) !important; background-position: center;">
 
         </div>
 
@@ -69,7 +69,7 @@
                         <h2 id="centrame">HTML:5 Avanzado</h2>
 
 
-                        <img src="../imgs/iCons/html.png" alt="">
+                        <img src="../assets/imgs/iCons/html.png" alt="">
                     </div>
 
                     <div class="sop">
@@ -81,13 +81,13 @@
                 <div class="abajo">
                     <div class="sop">
                         <h2 class="re-size">Js y Java Vanilla</h2>
-                        <img class="size" src="../imgs/iCons/java.png" alt="">
+                        <img class="size" src="../assets/imgs/iCons/java.png" alt="">
                     </div>
 
 
                     <div class="sop">
                         <h2 class="re-zise" style="margin-bottom: -23px;">Front-End Developer</h2>
-                        <img class="size" src="../imgs/iCons/front-end.png" alt="">
+                        <img class="size" src="../assets/imgs/iCons/front-end.png" alt="">
                     </div>
                 </div>
             </div>
@@ -98,9 +98,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </section>
 
     <!-- Section contact -->
