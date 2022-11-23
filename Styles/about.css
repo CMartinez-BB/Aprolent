@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+footer{
+    width: 100%;
+    height: 60px;
+    
+    
+}
+
+header{
+    width: 100%;
+    height: 60px;
+}
+
+section{
+    height: 900px;
+    width: 100%;
+    
+}
+
+hr {
+    background-color: #DDE1F0;
+    width: 94%;
+    border-top: 1px solid #DDE1F0;
+    margin-top: 20px;
+
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+body{
+    background: #F5F6F7;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: #838384;
+    font-size: 1.1em;
+    font-weight: 500;
+
+
+    padding: 12px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 3px;
+    margin-right: 50px;
+}
+
+span {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+p{
+    font-size: 1.3em;
+}
+.containe-head .cont-head{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+
+    z-index: 100;
+    position: fixed;
+}
+
+
+
+.containe-head .cont-head #logo {
+    font-size: 2em;
+    font-weight: 500;
+
+    margin-left: 50px;
+}
+
+/*Styles mamalones*/
+.about-Main{
+    width: 100%;
+    height: 900px;
+}
+
+.about-Main .img{
+    width: 100%;
+    height: 900px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter:brightness(0.4);
+    background-image: url(/imgs/wallpapers/sobre\ nosotros.jpg);
+}
+
+.about-Main #about-us{
+  
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 50px;
+    margin-right: 50px;  
+    
+    position: absolute;
+    top: 40%;
+
+}
+
+.about-Main #about-us h2{
+    font-size: 2.9em;
+    font-weight: 500;
+    color: white;
+}
+
+.about-Main #about-us span{
+    color: white;
+}
+
+.about-Main #about-us #p{
+
+    margin-top: 40px;
+    width: 60%;
+    color: white;
+}
+
+/*View*/
+.container{
+    width: 100%;
+    height: 900px;
+
+}
+
+.container .Visitas{
+    width: 100%;
+    height: 400px;
+
+    margin-top: 100px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+
+    
+}
+
+.container .Visitas .views{
+    width: 33.33%;
+    height: 200px;
+
+    margin: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container .Visitas .views:hover{
+    background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 2s;
+    box-shadow: 9px 6px 5px 0px rgba(209,209,209,0.58);
+}
+
+.container .Visitas .views h2{
+    font-size: 2.9em;
+    font-weight: bold;
+    color: #575757;
+
+   margin-left: 12px;
+
+   
+}
+
+.container .Visitas .views span{
+    font-size: 1em;
+    font-weight: 400;
+    color: #575757;
+
+    margin-left: 12px;
+}
+
+/*FOOTER 1*/
+.footer{
+    
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 100px;
+   
+
+}
+
+.footer .foter{
+    box-shadow: 9px 6px 5px 0px rgba(209,209,209,0.58);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;    
+
+    width: 90%;
+    height: 100px;
+
+    color: #575757;
+    background-color: white;
+    border-radius: 3px;
+
+
+}
+
+.footer .foter .text{
+    width: 70%;
+    
+    
+    display: flex;
+    flex-direction: column;
+    line-height: 25px;
+    margin-left: 50px;
+}
+
+.footer .foter .text h2{
+    font-size: 1.5em;
+    margin-left: -120px;
+    font-weight: bold;
+}
+
+
+.footer .foter .text span{
+    margin-left: -120px;
+    font-weight: 400;
+    font-size: 1em;
+}
+.footer .foter .butt .button-contac{
+    height: 40px;
+    background-color: #40B5E8;
+    border-radius: 3px;
+    color: white !important;
+    text-align: center;
+}
+
+.footer .foter .butt .button-contac:hover{
+   background-color: #0C88EC;
+}
+
+/*Start section footer*/
+.father .text-father{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-left: 200px;
+    margin-right: 200px;
+
+    margin-top: 15px;
+    font-size: .8em !important;
+}
+
+.father .text-father span{
+    font-size: .9em !important;
+}
+
+.father #jh{
+    width: 75%;
+    margin-left: 200px;
+    margin-right: 200px;
+}
