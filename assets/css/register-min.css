@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;1,700&family=Quicksand&display=swap');
+.card{
+    height: 500px;
+}
+
+.link-login{
+    font-weight: 700 !important;
+}
