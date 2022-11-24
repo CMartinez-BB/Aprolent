@@ -19,7 +19,7 @@
     <!-- section Main-->
     <section class="main-container">
 
-        <div class="img">
+        <div class="img" style="background-image: url('../assets/imgs/wallpapers/programacion.png')">
 
         </div>
 

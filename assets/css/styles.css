@@ -86,7 +86,6 @@ section{
 }
 
 .main-container .img{
-    background-image: url("../assets/imgs/wallpapers/programacion.png");
     background-size: cover;
     width: 100%;
     height: 500px;
