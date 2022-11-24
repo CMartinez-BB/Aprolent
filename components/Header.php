@@ -9,6 +9,6 @@
     <a href="templates/planes.php">Planes</a>
     <a href="templates/programacion.php">Programación</a>
     <a href="templates/about.php">Nosotros</a>           
-    <a href="../index.php">Ingresar</a>    
+    <a href="templates/register and login/login.php">Ingresar</a>    
 </nav>
 </header>

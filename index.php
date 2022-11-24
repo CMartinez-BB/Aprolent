@@ -17,7 +17,7 @@
 
     <!-- Background Main -->
     <section class="main-container">
-        <img id="hero" src="imgs/backgroun-html.jpg" alt="">
+        <img id="hero" src="assets/imgs/backgroun-html.jpg" alt="">
 
         <!-- Info Principal -->
         <div class="container-principal">
@@ -173,7 +173,7 @@
 
     <!-- Scction footer -->
    <?php
-        include('components/Footer.php');
+        include('./components/Footer.php');
    ?>
 </body>
 
