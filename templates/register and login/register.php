@@ -9,7 +9,7 @@ if (isset($_POST['registro'])) {
     $password = md5($_POST['password']);
     $user_types = $_POST['user_type'];
 
-    $select = "SELECT * FROM usuarios WHERE email='$email' && nivel='$user_types'  && password='$password' ";
+    $select = "SELECT * FROM usuarios WHERE nombre='$name' && email='$email' && nivel='$user_types' && password='$password' ";
     $result = mysqli_query($conexion, $select);
 
     if (mysqli_num_rows($result) > 0) {
@@ -104,7 +104,7 @@ if (isset($_POST['registro'])) {
                             </div>
                             <div class="data-input my-3">
                                 <!-- Slect role -->
-                                <select name="user_type" id="">
+                                <select name="user_type" id="select">
                                     <option value="title">Seleciona tu destino</option>
                                     <option value="aprendiz">aprendis</option>
                                     <option value="maestro">maestro</option>
@@ -112,11 +112,12 @@ if (isset($_POST['registro'])) {
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2" name="registro">Iniciar</button>
+                                <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-1" name="registro">Iniciar</button>
                             </div>
+
+                            <span class="mt-1 text-center text-sm text-secondary mb-4">Ya tengo una cuenta? <a href="../register and login/login.php" class="text-dark link-login">Iniciar</a></span>
                         </form>
                     </div>
-                    <span class="mt-4 text-center text-sm text-secondary mb-4">Ya tengo una cuenta? <a href="../register and login/login.php" class="text-dark link-login">Iniciar</a></span>
                 </div>
             </div>
         </div>
