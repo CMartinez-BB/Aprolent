@@ -1,22 +1,8 @@
 <?php
     // Php database connection
     include('../../php/connection.php');
-    error_reporting(0);
-    session_start();
 
-    // If the user is already logged in, redirect him to welcome page
-    if(isset($_SESSION["nombre"])){
-        header("location: .././index.php");
-        exit;
-    }if(isset($_POST["submit"])){
-        $username=$_POST["username"];
-        $email=$_POST["email"];
-        $password=md5($_POST["password"]);
-
-        if($password==){}
-    }
-
- ?>
+?>
 
 
 <!DOCTYPE html>

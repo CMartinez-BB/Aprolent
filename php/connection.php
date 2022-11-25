@@ -1,8 +1,8 @@
 <?php
       $servidor = "localhost";
       $nombreBd = "aprolent";
-      $usuario = "admin";
-      $pass = "12345";
+      $usuario = "root";
+      $pass = "";
   
       // Creando la conexion
       $conexion = new mysqli($servidor,$usuario,$pass,$nombreBd);
