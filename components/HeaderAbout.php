@@ -6,10 +6,10 @@
 
             <!-- Nav -->
             <nav class="menu-bar">
-                <a href="../index.php">Inicio</a>
-                <a href="programacion.php">Programación</a>
-                <a href="planes.php">Planes</a>
-                <a href="login.php">Ingresar</a>
+                <a href=".././index.php">Inicio</a>
+                <a href="../templates/programacion.php">Programación</a>
+                <a href="../templates/planes.php">Planes</a>
+                <a href="../templates/register and login/login.php">Ingresar</a>
             </nav>
         </div>
 </header>

@@ -6,10 +6,10 @@
 
 
 <nav class="menu-bar">
-    <a href="../index.html">Inicio</a>
-    <a href="planes.html">Planes</a>
-    <a href="about.html">Nosotros</a>
-    <a href="login.html">Ingresar</a>
+    <a href=".././index.php">Inicio</a>
+    <a href="../templates/planes.php">Planes</a>
+    <a href="../templates/about.php">Nosotros</a>
+    <a href="../templates/register and login/login.php">Ingresar</a>
 
 </nav>
 </header>

@@ -16,23 +16,6 @@
         include('../components/HeaderProgramacion.php');
     ?>
 
-    <!-- header menu bar -->
-    <header class="containe-head">
-
-        <div id="logo">
-            DeveroCode
-        </div>
-
-
-        <nav class="menu-bar">
-            <a href="../index.php">Inicio</a>
-            <a href="../templates/planes.php">Planes</a>
-            <a href="../templates/about.php">Nosotros</a>
-            <a href="../templates/login.php">Ingresar</a>
-
-        </nav>
-    </header>
-
     <!-- section Main-->
     <section class="main-container">
 
@@ -74,7 +57,7 @@
 
                     <div class="sop">
                         <h2 class="re-size">CSS <br> Flexbox y Grid</h2>
-                        <img class="size" src="../imgs/iCons/css.png" alt="">
+                        <img class="size" src="../assets/imgs/iCons/css.png" alt="">
                     </div>
                 </div>
 
@@ -93,7 +76,7 @@
             </div>
 
             <div class="img-presentation">
-                <div class="img">
+                <div class="img" style="background-image: url('.././assets/imgs/wallpapers/pngegg.png')">
 
                 </div>
             </div>
