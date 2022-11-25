@@ -1,9 +1,26 @@
 <?php
-    // Php database connection
-    include('../../php/connection.php');
+// Called BD
+include("../../php/connection.php");
 
+if (isset($_POST['registro'])) {
+    $name = mysqli_real_escape_string($conexion, $_POST['nombre']);
+    $email = mysqli_real_escape_string($conexion, $_POST['email']);
+    // encrypting the password
+    $password = md5($_POST['password']);
+    $user_types = $_POST['user_type'];
+
+    $select = "SELECT * FROM usuarios WHERE email='$email' && nivel='$user_types'  && password='$password' ";
+    $result = mysqli_query($conexion, $select);
+
+    if (mysqli_num_rows($result) > 0) {
+        $error[] = 'Este usuario o correo ya esta registrado';
+    } else {
+        $inssert = "INSERT INTO usuarios(nombre,email,nivel,password) VALUES('$name','$email', '$user_types', '$password')";
+        mysqli_query($conexion, $inssert);
+        header('location: ./login.php');
+    }
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -25,9 +42,11 @@
     <title>Register</title>
 </head>
 
+
+
 <body class="register register-card">
     <?php
-        include('../../components/HeaderLoginR.php');
+    include('../../components/HeaderLoginR.php');
     ?>
 
     <div id="particles-js"></div>
@@ -63,26 +82,42 @@
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
-                        <form action="" method="post" role="form" class="text-start">
+                        <form action="" method="POST" role="form" class="text-start">
+                            <?php
+                            if (isset($error)) {
+                                foreach ($error as $error) {
+                                    echo '<span>' . $error . '</span>';
+                                };
+                            }
+                            ?>
                             <div class="data-input my-3">
-                                <input type="email" required>
+                                <input type="text" name="nombre" required>
+                                <label>Nombre</label>
+                            </div>
+                            <div class="data-input my-3">
+                                <input type="email" name="email" required>
                                 <label>Email</label>
                             </div>
                             <div class="data-input my-3">
-                                <input type="password" required>
+                                <input type="password" name="password" required>
                                 <label>Password</label>
                             </div>
                             <div class="data-input my-3">
-                                <input type="text" required>
-                                <label>Role</label>
+                                <!-- Slect role -->
+                                <select name="user_type" id="">
+                                    <option value="title">Seleciona tu destino</option>
+                                    <option value="aprendiz">aprendis</option>
+                                    <option value="maestro">maestro</option>
+                                </select>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2" name="registro">Iniciar</button>
                             </div>
                         </form>
                     </div>
-                    <div class="text-center">
-                        <button type="button" class="btn bg-gradient-primary w-75 my-4 mb-2">Iniciar</button>
-                    </div>
                     <span class="mt-4 text-center text-sm text-secondary mb-4">Ya tengo una cuenta? <a href="../register and login/login.php" class="text-dark link-login">Iniciar</a></span>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
@@ -92,7 +127,7 @@
     <!-- Particles -->
     <script src="../../assets/Js/effects/particles.min.js"></script>
     <script src="../../assets/Js/effects/app.js"></script>
-   
+
 </body>
 
 </html>
