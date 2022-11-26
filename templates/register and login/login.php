@@ -1,7 +1,7 @@
 <?php
 // Called BD
 include("../../php/connection.php");
-
+session_start();
 
 if (isset($_POST['registro'])) {
     $name = mysqli_real_escape_string($conexion, $_POST['nombre']);
