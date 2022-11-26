@@ -1,3 +1,33 @@
+<?php
+// Called BD
+include("../../php/connection.php");
+
+
+if (isset($_POST['registro'])) {
+    $name = mysqli_real_escape_string($conexion, $_POST['nombre']);
+    $email = mysqli_real_escape_string($conexion, $_POST['email']);
+    // encrypting the password
+    $password = md5($_POST['password']);
+    $user_type = $_POST['user_type'];
+
+    $select = "SELECT * FROM usuarios WHERE email='$email' && password='$password' ";
+    $result = mysqli_query($conexion, $select);
+
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_array($result);
+
+        if ($row['nivel'] == 'maestro') {
+            $_SESSION['admin_name'] = $row ['nombre'];
+            header('location: ../admin/admin.php');
+        } else if ($row['nivel'] == 'aprendiz') {
+            header('location: ./login.php');
+        
+        }
+    }
+  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,7 +48,7 @@
 
 <body class="register register-card">
     <?php
-        include('../../components/HeaderLoginR.php');
+    include('../../components/HeaderLoginR.php');
     ?>
 
     <div id="particles-js"></div>
@@ -50,27 +80,33 @@
                                     </a>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
-                        <form action="" role="form" class="text-start">
+                        <form action="" method="POST" role="form" class="text-start">
+                            <?php
+                            if (!empty($message)) {
+                                echo '<span>' . $message . '</span>';
+                            }
+                            ?>
                             <div class="data-input my-3">
-                                <input type="email" required>
+                                <input type="email" name="email" required>
                                 <label>Email</label>
                             </div>
                             <div class="data-input my-3">
-                                <input type="password" required>
+                                <input type="password" name="password" required>
                                 <label>Password</label>
                             </div>
+
+                            <div class="text-center">
+                                <button type="submit" name="registro" class="btn bg-gradient-primary w-100 my-4 mb-2">Iniciar</button>
+                            </div>
+                            <a href="../register and login/register.php" class="mt-1 text-center text-sm count mb-1">No tienes cuenta aún?</a>
                         </form>
                     </div>
-                    <div class="text-center">
-                        <button type="button" class="btn bg-gradient-primary w-75 my-4 mb-2">Iniciar</button>
-                    </div>
-                    <a href="../register and login/register.php" class="mt-1 text-center text-sm count mb-1">No tienes cuenta aún?</a>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
@@ -81,7 +117,7 @@
     <script src="../../assets/Js/effects/particles.min.js"></script>
     <script src="../../assets/Js/effects/app.js"></script>
 
-    
+
 </body>
 
 </html>
