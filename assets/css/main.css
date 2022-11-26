@@ -118,3 +118,9 @@ h4{
     border-left:4px solid #5ea4309d !important;
     color: #5ea4309d !important;
 }
+
+.salir{
+    background: transparent !important;
+    height: 10px !important;
+    color: #3a3b45 !important;
+}

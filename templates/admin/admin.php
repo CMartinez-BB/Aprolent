@@ -2,6 +2,7 @@
     // Called BD
     include("../../php/connection.php");
     session_start();
+    
 
     if (!isset($_SESSION['admin_name'])) {
         # code...
@@ -23,6 +24,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <!-- Icons by Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Icons by Fontawesome -->
+    <script src="https://kit.fontawesome.com/85d631ed4b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../assets/css/main.css">
     <!-- Import custon css -->
     <link rel="stylesheet" href="../../assets/css/custom.min.css">
@@ -66,13 +69,13 @@
                 </a>
             </li>
 
-            <button class="btn-mas">
+            <!-- <button class="btn-mas">
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-list"
                     viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
-            </button>
+            </button> -->
             <!-- Function wrapp -->
             <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -325,11 +328,11 @@
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                <a class="dropdown-item" href="../../php/logoutController.php">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Salir
                                 </a>
                             </div>
                         </li>
@@ -352,9 +355,6 @@
                                                 Cursos</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800 fs-3">45 Activos</div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -371,9 +371,6 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <span class="fs-3">1.200</span>
                                             </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -404,9 +401,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -420,9 +414,6 @@
                                             <div class="text-xs font-weight-bold text-uppercase mb-1">
                                                 Dinero ganado</div>
                                             <div class="h5 fs-3 mb-0 font-weight-bold text-gray-800">$8,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -634,8 +625,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js">
 
     <!-- Animation -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/Js/jquery.min.js"></script>
+    <script src="../../assets/Js/bootstrap.bundle.min.js"></script>
 
 
 </body>
