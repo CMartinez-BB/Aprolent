@@ -7,15 +7,15 @@ if (isset($_POST['registro'])) {
     $email = mysqli_real_escape_string($conexion, $_POST['email']);
     // encrypting the password
     $password = md5($_POST['password']);
-    $user_types = $_POST['user_type'];
+    $user_type = $_POST['user_type'];
 
-    $select = "SELECT * FROM usuarios WHERE nombre='$name' && email='$email' && nivel='$user_types' && password='$password' ";
+    $select = "SELECT * FROM usuarios WHERE nombre='$name' && email='$email' && nivel='$user_type' && password='$password' ";
     $result = mysqli_query($conexion, $select);
 
     if (mysqli_num_rows($result) > 0) {
         $error[] = 'Este usuario o correo ya esta registrado';
     } else {
-        $inssert = "INSERT INTO usuarios(nombre,email,nivel,password) VALUES('$name','$email', '$user_types', '$password')";
+        $inssert = "INSERT INTO usuarios(nombre,email,nivel,password) VALUES('$name','$email', '$user_type', '$password')";
         mysqli_query($conexion, $inssert);
         header('location: ./login.php');
     }
