@@ -20,7 +20,7 @@ if (isset($_POST['registro'])) {
             $_SESSION['admin_name'] = $row ['nombre'];
             header('location: ../admin/admin.php');
         } else if ($row['nivel'] == 'aprendiz') {
-            header('location: ./login.php');
+            header('location: ../aprolent.php');
         
         }
     }

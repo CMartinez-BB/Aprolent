@@ -1,0 +1,92 @@
+@font-face {
+    font-family: "udemy sans";
+    src: url(/fonts/Udemy-Sans-Bold-v1.woff2), url(/fonts/Udemy-Sans-Regular-v1.woff2);
+}
+
+
+.container-box .info .programming-cont .carrousel-cont{
+    width: 100%;
+    height: 400px;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper {
+    width: 96%;
+    height: 100%;
+    
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-wrapper{
+    width: 100%;
+    height: 300px;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide {
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide  .image{
+    width: 100%;
+    height: 150px;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide .image img {
+    width: 100%;
+    height: 150px !important;
+    object-fit: cover;
+    border: 1px solid rgb(238, 238, 238);
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide .cont-text{
+    width: 100%;
+    height: 150px;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide .cont-text .title{
+    width: 100% !important;
+    height: 70px;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide .cont-text .title h3{
+    font-size: 1.1em !important;
+    text-align: justify !important;
+    margin-left: 0px;
+    font-weight: bold;
+    color: #000;
+    font-family: "udemy sans";
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide .cont-text .master{
+    width: 100%;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide .cont-text span{
+    font-size: 14px;
+    color: rgb(137, 136, 136);
+    float: left;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide .cont-text .price{
+    width: 100%;
+}
+
+.container-box .info .programming-cont .carrousel-cont .swiper-slide .cont-text .price p{
+    font-size: 1em !important;
+    text-align: justify !important;
+    margin-left: 0px;
+    font-weight: bold;
+    color: #000;
+
+    font-family: "udemy sans";
+}
