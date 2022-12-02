@@ -3,13 +3,13 @@
 
 @font-face {
     font-family: "udemy sans";
-    src: url(/fonts/Udemy-Sans-Bold-v1.woff2), url(/fonts/Udemy-Sans-Regular-v1.woff2);
+    src: url(.././assets/fonts/Udemy-Sans-Bold-v1.woff2), url(.././assets/fonts/Udemy-Sans-Regular-v1.woff2);
 }
 
 
 @font-face {
     font-family: "SuisseWorks";
-    src: url(/fonts/SuisseWorks-Bold-v1.woff2);
+    src: url(.././assets/fonts/SuisseWorks-Bold-v1.woff2);
 }
 
 *{
