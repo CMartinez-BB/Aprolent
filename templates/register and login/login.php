@@ -4,11 +4,11 @@ include("../../php/connection.php");
 session_start();
 
 if (isset($_POST['registro'])) {
-    $name = mysqli_real_escape_string($conexion, $_POST['nombre']);
+    // $name = mysqli_real_escape_string($conexion, $_POST['nombre']);
     $email = mysqli_real_escape_string($conexion, $_POST['email']);
     // encrypting the password
     $password = md5($_POST['password']);
-    $user_type = $_POST['user_type'];
+    // $user_type = $_POST['user_type'];
 
     $select = "SELECT * FROM usuarios WHERE email='$email' && password='$password' ";
     $result = mysqli_query($conexion, $select);
@@ -18,13 +18,20 @@ if (isset($_POST['registro'])) {
 
         if ($row['nivel'] == 'maestro') {
             $_SESSION['admin_name'] = $row ['nombre'];
+            $_SESSION['rol'] = $row ['nivel'];
             header('location: ../admin/admin.php');
         } else if ($row['nivel'] == 'aprendiz') {
+            $_SESSION['admin_name'] = $row ['nombre'];
             header('location: ../aprolent.php');
-        
+        }else{
+            
+            
         }
+    }else{
+        header('location: ../register and login/register.php');
     }
-  
+    
+    
 }
 ?>
 

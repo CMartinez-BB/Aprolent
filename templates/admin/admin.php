@@ -3,37 +3,13 @@
 include("../../php/connection.php");
 session_start();
 
+$usuario = $_SESSION['admin_name'];
 
-if (!isset($_SESSION['admin_name'])) {
+if (!isset($usuario)) {
     # code...
     header('../register and login/login.php');
 }
 
-// function update
-if (isset($_SESSION['cont'])) {
-    # code...
-    
-}else{
-    if (!isset($_GET['id'])) {
-        # code...
-        $nombre = "";
-        $curso = "";
-        $status = "";
-        $results = $conexion ->query('SELECT * FROM alumnos where id='.$_GET['id']);
-        $rows = mysqli_fetch_row($results);
-        $nombre = $rows[1];
-        $curso = $rows[2];
-        $status = $rows[3];
-
-        $arreglo[] = array(
-            'Id' => $_GET['id'],
-            'Nombre' => $nombre,
-            'Curso' => $curso,
-            'Status' => $status
-        );
-        $_SESSION['cont'] = $arreglo;
-    }
-}
 ?>
 
 
@@ -511,12 +487,14 @@ if (isset($_SESSION['cont'])) {
                                                                         data-status="<?php echo $mostrar['status'] ?>" data-toggle="modal" data-target="#exampleModal">
                                                                         <i class="fa-solid fa-file-pen"></i>
                                                                     </button>
-                                                                    <button class="btn btn-danger m-1">
+                                                                    <button class="btn btn-danger m-1 btnEliminar" 
+                                                                        data-id="<?php echo $mostrar['id'] ?>"
+                                                                        data-toggle="modal" data-target="#modalConfirmDelete">
                                                                         <i class="fa-solid fa-trash"></i>
                                                                     </button>
-                                                                    <button class="btn btn-warning m-1">
+                                                                    <a href="../fpdf/reporteAlumnos.php" target="_blank" class="btn btn-warning m-1 pdf">
                                                                         <i class="fa-solid fa-print"></i>
-                                                                    </button>
+                                                                    </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -562,6 +540,35 @@ if (isset($_SESSION['cont'])) {
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <!-- Modal delete-->
+                                                    <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                                                            <!--Content-->
+                                                            <div class="modal-content text-center">
+                                                            <!--Header-->
+                                                            <div class="modal-header d-flex justify-content-center bg-danger">
+                                                                <p class="heading text-light fs-5">Desea borrar a este usuario?</p>
+                                                            </div>
+
+                                                            <!--Body-->
+                                                            <div class="modal-body">
+
+                                                                <i class="fas fa-times fa-4x animated rotateIn"></i>
+
+                                                            </div>
+
+                                                            <!--Footer-->
+                                                            <div class="modal-footer flex-center">
+                                                                <button type="submit" class="btn btn-outline-danger destroy" data-dismiss="modal">Si</button>
+                                                                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</button>
+                                                            </div>
+                                                            </div>
+                                                            <!--/.Content-->
+                                                        </div>
+                                                    </div>
+                                                    
                                                     
                                                 </tbody>
                                             </table>
@@ -673,6 +680,18 @@ if (isset($_SESSION['cont'])) {
         $(document).ready(function(){
             // Variables
             var idEditar = -1;
+            var idEliminar = -1;
+            var fila;
+
+            // Functions
+            $(".btnEliminar").click(function(){
+                idEliminar = $(this).data('id');
+                fila = $(this).parent('td').parent('tr');
+            });
+            $(".destroy").click(function(){
+                console.log('90')
+                // $(fila).fadeOut(1000);
+            });
 
             $(".update").click(function(){
                 idEditar = $(this).data('id');
