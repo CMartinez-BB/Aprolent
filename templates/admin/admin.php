@@ -1,14 +1,41 @@
 <?php
-    // Called BD
-    include("../../php/connection.php");
-    session_start();
-    
+// Called BD
+include("../../php/connection.php");
+session_start();
 
-    if (!isset($_SESSION['admin_name'])) {
+
+if (!isset($_SESSION['admin_name'])) {
+    # code...
+    header('../register and login/login.php');
+}
+
+// function update
+if (isset($_SESSION['cont'])) {
+    # code...
+    
+}else{
+    if (!isset($_GET['id'])) {
         # code...
-        header('../register and login/login.php');
+        $nombre = "";
+        $curso = "";
+        $status = "";
+        $results = $conexion ->query('SELECT * FROM alumnos where id='.$_GET['id']);
+        $rows = mysqli_fetch_row($results);
+        $nombre = $rows[1];
+        $curso = $rows[2];
+        $status = $rows[3];
+
+        $arreglo[] = array(
+            'Id' => $_GET['id'],
+            'Nombre' => $nombre,
+            'Curso' => $curso,
+            'Status' => $status
+        );
+        $_SESSION['cont'] = $arreglo;
     }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -104,11 +131,9 @@
                 <!-- Navbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 w-100 static-top shadow">
                     <!-- Nav search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Estoy de suerte" aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Estoy de suerte" aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" type="button">
                                     <span class="fw-normal">buscar</span>
@@ -120,19 +145,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Notifications -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                                    class="bi bi-bell-fill" viewBox="0 0 20 20">
-                                    <path
-                                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 20 20">
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
                                 </svg>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-info badge-counter camp">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Notificaciones
                                 </h6>
@@ -186,19 +207,15 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                                    class="bi bi-chat-left-fill" viewBox="0 0 20 20">
-                                    <path
-                                        d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 20 20">
+                                    <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                                 </svg>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-info badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Mensajes
                                 </h6>
@@ -253,8 +270,7 @@
                         <!-- Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
@@ -293,8 +309,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -309,14 +324,12 @@
 
                         <!-- Admin name -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $_SESSION['admin_name'] ?> </span>
                                 <!-- <img class="img-profile rounded-circle" src=""> -->
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -393,9 +406,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-danger" role="progressbar"
-                                                            style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -433,130 +444,149 @@
                                     <div class="row">
                                         <!-- Show students in tables -->
                                         <div class="col-sm-12 col-md-6">
-                                            <div class="dataTables_length" id="dataTable_length"><label>Mostrar<select
-                                                        name="dataTable_length" aria-controls="dataTable"
-                                                        class="custom-select custom-select-sm form-control form-control-sm">
+                                            <div class="dataTables_length" id="dataTable_length"><label>Mostrar<select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
                                                         <option value="10">10</option>
                                                         <option value="25">25</option>
                                                     </select></label></div>
                                         </div>
                                         <div class="col-sm-12 col-md-6">
                                             <div id="dataTable_filter" class="dataTables_filter"><label>Buscar
-                                                    alumno:<input type="search" class="form-control form-control-sm"
-                                                        placeholder="" aria-controls="dataTable"></label></div>
+                                                    alumno:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <!-- Start section table information -->
-                                            <table class="table table-bordered dataTable" id="dataTable" width="100%"
-                                                cellspacing="0" role="grid" aria-describedby="dataTable_info"
-                                                style="width: 100%;">
+                                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                                 <thead>
                                                     <tr role="row">
-                                                        <th class="sorting sorting_asc" tabindex="0"
-                                                            aria-controls="dataTable" rowspan="1" colspan="1"
-                                                            aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 185px;">
+                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
+                                                            <span class="text-black">Id</span>
+                                                        </th>
+                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
                                                             <span class="text-black">Nombre</span>
                                                         </th>
-                                                        <th class="sorting sorting_asc" tabindex="0"
-                                                            aria-controls="dataTable" rowspan="1" colspan="1"
-                                                            aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 185px;">
+                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
                                                             <span class="text-black">Curso</span>
                                                         </th>
-                                                        <th class="sorting sorting_asc" tabindex="0"
-                                                            aria-controls="dataTable" rowspan="1" colspan="1"
-                                                            aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 185px;">
+                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
                                                             <span class="text-black">Status</span>
                                                         </th>
-                                                        <th class="sorting sorting_asc" tabindex="0"
-                                                            aria-controls="dataTable" rowspan="1" colspan="1"
-                                                            aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 185px;">
-                                                            <span class="text-black">Generar certificado</span>
+                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
+                                                            <span class="text-black">Acciones</span>
                                                         </th>
                                                     </tr>
                                                 </thead>
                                                 <!-- Start section dates -->
                                                 <tbody>
-                                                    <?php 
-                                                        $alumnos = "SELECT * FROM alumnos";
-                                                        $resul = mysqli_query($conexion, $alumnos);
+                                                    <?php
+                                                    $alumnos = "SELECT * FROM alumnos";
+                                                    $resul = mysqli_query($conexion, $alumnos);
 
-                                                        while($mostrar =mysqli_fetch_array($resul)){
+                                                    while ($mostrar = mysqli_fetch_array($resul)) {
                                                     ?>
-                                                    <tr class="odd">
-                                                        <td class="sorting_1">
-                                                            <p class="name text"> <?php echo $mostrar['nombre'] ?> </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="cruso-p">
-                                                                <?php echo $mostrar['curso'] ?>
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="certificate">
-                                                                <?php echo $mostrar['status'] ?>
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <button class="btn btn-secondary">
-                                                                <p class="generar">Generar</p>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <?php 
-                                                        }
+                                                        <tr class="odd">
+                                                            <td class="sorting_1">
+                                                                <p class="name text"> <?php echo $mostrar['id'] ?> </p>
+                                                            </td>
+                                                            <td class="sorting_1">
+                                                                <p class="name text"> <?php echo $mostrar['nombre'] ?> </p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="cruso-p">
+                                                                    <?php echo $mostrar['curso'] ?>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="certificate">
+                                                                    <?php echo $mostrar['status'] ?>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-cont d-flex justify-content-center">
+                                                                    <button class="btn btn-primary m-1 update" 
+                                                                        data-id="<?php echo $mostrar['id'] ?>" 
+                                                                        data-nombre="<?php echo $mostrar['nombre'] ?>"
+                                                                        data-curso="<?php echo $mostrar['curso'] ?>"
+                                                                        data-status="<?php echo $mostrar['status'] ?>" data-toggle="modal" data-target="#exampleModal">
+                                                                        <i class="fa-solid fa-file-pen"></i>
+                                                                    </button>
+                                                                    <button class="btn btn-danger m-1">
+                                                                        <i class="fa-solid fa-trash"></i>
+                                                                    </button>
+                                                                    <button class="btn btn-warning m-1">
+                                                                        <i class="fa-solid fa-print"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                   
+
+                                                    <?php
+                                                            }
                                                     ?>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Actualizar datos: Alumnos</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form class="form" method="post" action="../../php/editarAlumnos.php">
+                                                                        <input type="hidden" name="id" id="idEditar">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Nombre</label>
+                                                                            <input type="text" name="nombre" id="update_name" class="form-control">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Curso</label>
+                                                                            <input type="text" name="curso" id="update_curso" class="form-control">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Status</label>
+                                                                            <input type="text" name="status" id="update_status" class="form-control">
+                                                                        </div>
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                                                            <button type="submit" class="btn btn-success editar" name="guardar">Guardar cambios</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                              
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="dataTable_info" role="status"
-                                                aria-live="polite">
+                                            <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
                                                 <span class="text-danger">*Recuerda generar los certficados de los
                                                     alumnos
                                                     con status finalizado</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers"
-                                                id="dataTable_paginate">
+                                            <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                                                 <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled"
-                                                        id="dataTable_previous"><a href="#" aria-controls="dataTable"
-                                                            data-dt-idx="0" tabindex="0" class="page-link">Páginas</a>
+                                                    <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Páginas</a>
                                                     </li>
-                                                    <li class="paginate_button page-item active"><a href="#"
-                                                            aria-controls="dataTable" data-dt-idx="1" tabindex="0"
-                                                            class="page-link">1</a></li>
-                                                    <li class="paginate_button page-item "><a href="#"
-                                                            aria-controls="dataTable" data-dt-idx="2" tabindex="0"
-                                                            class="page-link">2</a></li>
-                                                    <li class="paginate_button page-item "><a href="#"
-                                                            aria-controls="dataTable" data-dt-idx="3" tabindex="0"
-                                                            class="page-link">3</a></li>
-                                                    <li class="paginate_button page-item "><a href="#"
-                                                            aria-controls="dataTable" data-dt-idx="4" tabindex="0"
-                                                            class="page-link">4</a></li>
-                                                    <li class="paginate_button page-item "><a href="#"
-                                                            aria-controls="dataTable" data-dt-idx="5" tabindex="0"
-                                                            class="page-link">5</a></li>
-                                                    <li class="paginate_button page-item "><a href="#"
-                                                            aria-controls="dataTable" data-dt-idx="6" tabindex="0"
-                                                            class="page-link">6</a></li>
-                                                    <li class="paginate_button page-item next" id="dataTable_next"><a
-                                                            href="#" aria-controls="dataTable" data-dt-idx="7"
-                                                            tabindex="0" class="page-link">siguiente</a></li>
+                                                    <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                                                    <li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">siguiente</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -566,7 +596,8 @@
                         </div>
                     </div>
                 </div>
-                
+
+
                 <!-- Section pryvacity -->
                 <div class="row gx-5 m-auto">
                     <!-- Privacy suggestions illustrated card-->
@@ -586,7 +617,8 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent position-relative ripple-gray px-4 mdc-ripple-upgraded">
-                                <a class="stretched-link link text-decoration-none" href="#!">Revisar sugerencias (4)</a></div>
+                                <a class="stretched-link link text-decoration-none" href="#!">Revisar sugerencias (4)</a>
+                            </div>
                         </div>
                     </div>
                     <!-- Account storage illustrated card-->
@@ -600,8 +632,7 @@
                                             El almacenamiento de tu cunta se registra en todos los dispositivos vinculados
                                         </p>
                                         <div class="progress mb-2" style="height: 0.25rem">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"
-                                                aria-valuenow="10" aria-valuemin="0" aria-valuemax="30"></div>
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="30"></div>
                                         </div>
                                         <div class="card-text">15 GB of 90 GB</div>
                                     </div>
@@ -609,12 +640,13 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent position-relative ripple-gray px-4 mdc-ripple-upgraded">
-                                <a class="stretched-link link text-decoration-none" href="#!">Liberar espacio</a></div>
+                                <a class="stretched-link link text-decoration-none" href="#!">Liberar espacio</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
+
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -636,7 +668,26 @@
     <script src="../../assets/Js/jquery.min.js"></script>
     <script src="../../assets/Js/bootstrap.bundle.min.js"></script>
 
+                                                    
+    <script>
+        $(document).ready(function(){
+            // Variables
+            var idEditar = -1;
 
+            $(".update").click(function(){
+                idEditar = $(this).data('id');
+                var name = $(this).data('nombre')
+                var course = $(this).data('curso')
+                var status = $(this).data('status')
+
+                $("#update_name").val(name);
+                $("#update_curso").val(course);
+                $("#update_status").val(status);
+                $("#idEditar").val(idEditar);
+            });
+        });
+        
+    </script>
 </body>
 
 </html>

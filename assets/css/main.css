@@ -38,8 +38,12 @@ h4{
 }
 
 .btn-secondary{
-    height: 33px;
-    width: 100%;
+    height: 40px !important;
+    width: 100% !important;
+}
+
+.form-control{
+    height: 40px!important;
 }
 
 /* My styles */
