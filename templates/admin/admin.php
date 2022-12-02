@@ -325,9 +325,9 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="../aprolent.php">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                    Home
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="../../php/logoutController.php">
@@ -486,18 +486,24 @@
                                                 </thead>
                                                 <!-- Start section dates -->
                                                 <tbody>
+                                                    <?php 
+                                                        $alumnos = "SELECT * FROM alumnos";
+                                                        $resul = mysqli_query($conexion, $alumnos);
+
+                                                        while($mostrar =mysqli_fetch_array($resul)){
+                                                    ?>
                                                     <tr class="odd">
                                                         <td class="sorting_1">
-                                                            <p class="name text">Misael durán</p>
+                                                            <p class="name text"> <?php echo $mostrar['nombre'] ?> </p>
                                                         </td>
                                                         <td>
                                                             <p class="cruso-p">
-                                                                Fundamentos de progrmación
+                                                                <?php echo $mostrar['curso'] ?>
                                                             </p>
                                                         </td>
                                                         <td>
                                                             <p class="certificate">
-                                                                finalizado
+                                                                <?php echo $mostrar['status'] ?>
                                                             </p>
                                                         </td>
                                                         <td>
@@ -506,6 +512,9 @@
                                                             </button>
                                                         </td>
                                                     </tr>
+                                                    <?php 
+                                                        }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>

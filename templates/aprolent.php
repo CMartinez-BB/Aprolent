@@ -1,3 +1,15 @@
+<?php
+    // Called BD
+    include(".././php/connection.php");
+    session_start();
+    
+
+    if (!isset($_SESSION['admin_name'])) {
+        # code...
+        header('../register and login/login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,18 +18,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Import styles of Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href=".././assets/css/bootstrap.min.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- My styles -->
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href=".././assets/css/home.css">
     <!-- Kit iCons by Font Awesome -->
     <script src="https://kit.fontawesome.com/85d631ed4b.js" crossorigin="anonymous"></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <!-- Style to Slide -->
-    <link rel="stylesheet" href="/css/slider.css">
+    <link rel="stylesheet" href=".././assets/css/slider.css">
     <!-- Sweep css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <title>Cursos en linea: Aprende a tu tiempo</title>
@@ -43,17 +55,17 @@
             </div>
             <div class="carousel-inner modify">
                 <div class="carousel-item active">
-                    <img src="/imgs/school.jpg" height="100%" class="d-block w-100" alt="...">
+                    <img src=".././assets/imgs/school.jpg" height="100%" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item ">
-                    <img src="/imgs/Web-debeloper.jpg" class="d-block w-100" alt="...">
+                    <img src=".././assets/imgs/Web-debeloper.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Second slide label</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item phrase-cont">
-                    <img src="/imgs/phrase.jpg" class="d-block w-100" alt="...">
+                    <img src=".././assets/imgs/phrase.jpg" class="d-block w-100" alt="...">
                     <div class="phrase position-absolute d-flex">
                         <div class="card">
                             <h3>Si lo puede imaginar <br> lo puedes programar</h3>
@@ -132,7 +144,7 @@
                         <div class="swiper-wrapper d-flex flex-row">
                             <div class="swiper-slide flex-column">
                                 <div class="image">
-                                    <img src="/imgs/Carrousel/html.jpg" alt="layout_in_html">
+                                    <img src=".././assets/imgs/Carrousel/html.jpg" alt="layout_in_html">
                                 </div>
 
                                 <div class="cont-text d-flex flex-column mt-2">
@@ -150,7 +162,7 @@
 
                             <div class="swiper-slide flex-column">
                                 <div class="image">
-                                    <img src="/imgs/Carrousel/laravel.jpg" alt="layout_in_html">
+                                    <img src=".././assets/imgs/Carrousel/laravel.jpg" alt="layout_in_html">
                                 </div>
 
                                 <div class="cont-text d-flex flex-column mt-2">
@@ -168,7 +180,7 @@
 
                             <div class="swiper-slide flex-column">
                                 <div class="image">
-                                    <img src="/imgs/Carrousel/vue.jpg" alt="layout_in_html">
+                                    <img src=".././assets/imgs/Carrousel/vue.jpg" alt="layout_in_html">
                                 </div>
 
                                 <div class="cont-text d-flex flex-column mt-2">
@@ -186,7 +198,7 @@
 
                             <div class="swiper-slide flex-column">
                                 <div class="image">
-                                    <img src="/imgs/Carrousel/bootstrap.jpg" alt="layout_in_html">
+                                    <img src=".././assets/imgs/Carrousel/bootstrap.jpg" alt="layout_in_html">
                                 </div>
 
                                 <div class="cont-text d-flex flex-column mt-2">
@@ -204,7 +216,7 @@
 
                             <div class="swiper-slide flex-column">
                                 <div class="image">
-                                    <img src="/imgs/Carrousel/php.png" alt="layout_in_html">
+                                    <img src=".././assets/imgs/Carrousel/php.png" alt="layout_in_html">
                                 </div>
 
                                 <div class="cont-text d-flex flex-column mt-2">
@@ -223,7 +235,7 @@
                             <!-- Course DJango -->
                             <div class="swiper-slide flex-column">
                                 <div class="image">
-                                    <img src="/imgs/Carrousel/django.jpg" alt="layout_in_html">
+                                    <img src=".././assets/imgs/Carrousel/django.jpg" alt="layout_in_html">
                                 </div>
 
                                 <div class="cont-text d-flex flex-column mt-2">
@@ -351,7 +363,8 @@
     </div>
 
 
-
+    <script src=".././assets/Js/jquery.min.js"></script>
+    <script src=".././assets/Js/bootstrap.bundle.min.js"></script>
     <!-- Import js of Bootstrap -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
