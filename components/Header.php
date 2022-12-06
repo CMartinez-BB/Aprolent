@@ -2,7 +2,7 @@
 <header class="containe-head">
 
 <div id="logo">
-    DeveroCode
+    <a href="./templates/aprolent.php" style="font-weight: bold; color: black;">DeveroCode</a>
 </div>
 <!-- Nav -->
 <nav class="menu-bar">

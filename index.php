@@ -1,3 +1,7 @@
+<?php  
+    include('php/mail.php');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,7 +25,9 @@
 
         <!-- Info Principal -->
         <div class="container-principal">
-            <h1 id="logo-2">DeveroCode</h1>
+            <h1 id="logo-2">DeveroCode
+                
+            </h1>
             <h2 id="single-text">Solucionar tus problemas es mi trabajo</h2>
             <span id="text-info">
                 En DeveroCode diseñamos y solucionamos tus problemas, implementando soluciones adaptables de acuerdo a
@@ -133,32 +139,32 @@
     <!-- Section contac -->
     <section id="contac">
 
-        <form class="form">
+        <form class="form" method="post">
 
             <h2 class="form__title">Enviar mensaje</h2>
 
             <div class="form-container">
 
                 <div class="form-group">
-                    <input type="text" id="name" class="form_input" placeholder=" ">
+                    <input type="text" id="name" name="name" class="form_input" placeholder=" ">
                     <label for="name" class="form_label">Nombre</label>
                     <span class="form_line"></span>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" id="email" class="form_input" placeholder=" ">
+                    <input type="text" id="email" name="email" class="form_input" placeholder=" ">
                     <label for="email" class="form_label">Email</label>
                     <span class="form_line"></span>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" id="asunto" class="form_input" placeholder=" ">
+                    <input type="text" id="asunto" name="asunto" class="form_input" placeholder=" ">
                     <label for="asunto" class="form_label">Asunto</label>
                     <span class="form_line"></span>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" id="mensaje" class="form_input" placeholder=" ">
+                    <input type="text" id="mensaje" name="mensaje" class="form_input" placeholder=" ">
                     <label for="mensaje" class="form_label">Mensaje</label>
                     <span class="form_line"></span>
                 </div>
@@ -166,7 +172,7 @@
 
             </div>
 
-            <input type="submit" class="form_submit" value="Enviar mensaje">
+            <input type="submit" class="form_submit" name="enviar" value="Enviar mensaje">
         </form>
 
     </section>

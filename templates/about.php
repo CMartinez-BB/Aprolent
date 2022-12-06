@@ -76,7 +76,7 @@
             </div>
 
             <div class="butt">
-                <a href="/index.php?#contac" class="button-contac">Contactanos</a>
+                <a href="../index.php#contac" class="button-contac">Contactanos</a>
             </div>
         </div>
     </div>

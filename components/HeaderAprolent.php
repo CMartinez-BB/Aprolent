@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-lg mt-1 d-flex">
             <ul class="nabvar-nav me-auto mb-2 mb-lg-0 d-flex mr-2">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Aprolent Business</a> <!-- Font size need rem-->
+                    <a href="../index.php" class="nav-link">Aprolent Business</a> <!-- Font size need rem-->
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link text-dark">Enseñe en Aprolent</a> <!-- Font size need rem-->
@@ -48,15 +48,15 @@
 
 
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $_SESSION['admin_name'] ?> </span>
+                    <a class="nav-link dropdown" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $_SESSION['admin_name'] ?>
                         <!-- <img class="img-profile rounded-circle" src=""> -->
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Profile
+                        <a class="dropdown-item" href="../templates/admin/admin.php">
+                            <i class="fa-solid fa-toolbox"></i>
+                            Perfil
                         </a>
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>

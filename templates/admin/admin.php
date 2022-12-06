@@ -1,13 +1,18 @@
 <?php
-// Called BD
-include("../../php/connection.php");
 session_start();
+// Called BD
+include "../../php/connection.php";
 
-$usuario = $_SESSION['admin_name'];
 
-if (!isset($usuario)) {
+$row = $_SESSION['admin_name'];
+$user_type = $_SESSION['rol'];
+
+if (!isset($row)) {
     # code...
-    header('../register and login/login.php');
+    header('locate: ../register and login/login.php');
+}
+if ($user_type != 'maestro') {
+    header('locate: ../register and login/login.php');
 }
 
 ?>
@@ -44,12 +49,16 @@ if (!isset($usuario)) {
                 <h4>DeveroCode</h4>
             </div>
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="bi bi-briefcase-fill"></i>
-                    <span>Proyectos</span>
-                </a>
-            </li>
+            <?php if ($user_type == 'maestro') {?>
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="bi bi-briefcase-fill"></i>
+                        <span>Proyectos</span>
+                    </a>
+                </li>
+            <?php }?>
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
@@ -244,64 +253,12 @@ if (!isset($usuario)) {
                             </div>
                         </li>
                         <!-- Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
+
 
                         <!-- Admin name -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $_SESSION['admin_name'] ?> </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $row ?> </span>
                                 <!-- <img class="img-profile rounded-circle" src=""> -->
                             </a>
                             <!-- Dropdown - User Information -->
@@ -315,7 +272,7 @@ if (!isset($usuario)) {
                                     Settings
                                 </a>
                                 <a class="dropdown-item" href="../aprolent.php">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    <i class="bi bi-house-door-fill mr-2 text-gray-400"></i>
                                     Home
                                 </a>
                                 <div class="dropdown-divider"></div>
@@ -408,193 +365,194 @@ if (!isset($usuario)) {
                     </div>
                 </div>
                 <!-- Table alumnos -->
-                <div class="card shadow m-auto" id="card-alumn">
-                    <div class="card-container">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-secondary">Alumnos</h6>
-                        </div>
-                        <!-- Table -->
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                    <div class="row">
-                                        <!-- Show students in tables -->
-                                        <div class="col-sm-12 col-md-6">
-                                            <div class="dataTables_length" id="dataTable_length"><label>Mostrar<select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-                                                        <option value="10">10</option>
-                                                        <option value="25">25</option>
-                                                    </select></label></div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6">
-                                            <div id="dataTable_filter" class="dataTables_filter"><label>Buscar
-                                                    alumno:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <!-- Start section table information -->
-                                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
-                                                            <span class="text-black">Id</span>
-                                                        </th>
-                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
-                                                            <span class="text-black">Nombre</span>
-                                                        </th>
-                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
-                                                            <span class="text-black">Curso</span>
-                                                        </th>
-                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
-                                                            <span class="text-black">Status</span>
-                                                        </th>
-                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
-                                                            <span class="text-black">Acciones</span>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <!-- Start section dates -->
-                                                <tbody>
-                                                    <?php
-                                                    $alumnos = "SELECT * FROM alumnos";
-                                                    $resul = mysqli_query($conexion, $alumnos);
-
-                                                    while ($mostrar = mysqli_fetch_array($resul)) {
-                                                    ?>
-                                                        <tr class="odd">
-                                                            <td class="sorting_1">
-                                                                <p class="name text"> <?php echo $mostrar['id'] ?> </p>
-                                                            </td>
-                                                            <td class="sorting_1">
-                                                                <p class="name text"> <?php echo $mostrar['nombre'] ?> </p>
-                                                            </td>
-                                                            <td>
-                                                                <p class="cruso-p">
-                                                                    <?php echo $mostrar['curso'] ?>
-                                                                </p>
-                                                            </td>
-                                                            <td>
-                                                                <p class="certificate">
-                                                                    <?php echo $mostrar['status'] ?>
-                                                                </p>
-                                                            </td>
-                                                            <td>
-                                                                <div class="btn-cont d-flex justify-content-center">
-                                                                    <button class="btn btn-primary m-1 update" 
-                                                                        data-id="<?php echo $mostrar['id'] ?>" 
-                                                                        data-nombre="<?php echo $mostrar['nombre'] ?>"
-                                                                        data-curso="<?php echo $mostrar['curso'] ?>"
-                                                                        data-status="<?php echo $mostrar['status'] ?>" data-toggle="modal" data-target="#exampleModal">
-                                                                        <i class="fa-solid fa-file-pen"></i>
-                                                                    </button>
-                                                                    <button class="btn btn-danger m-1 btnEliminar" 
-                                                                        data-id="<?php echo $mostrar['id'] ?>"
-                                                                        data-toggle="modal" data-target="#modalConfirmDelete">
-                                                                        <i class="fa-solid fa-trash"></i>
-                                                                    </button>
-                                                                    <a href="../fpdf/reporteAlumnos.php" target="_blank" class="btn btn-warning m-1 pdf">
-                                                                        <i class="fa-solid fa-print"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                   
-
-                                                    <?php
-                                                            }
-                                                    ?>
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Actualizar datos: Alumnos</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form class="form" method="post" action="../../php/editarAlumnos.php">
-                                                                        <input type="hidden" name="id" id="idEditar">
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input type="text" name="nombre" id="update_name" class="form-control">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Curso</label>
-                                                                            <input type="text" name="curso" id="update_curso" class="form-control">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label">Status</label>
-                                                                            <input type="text" name="status" id="update_status" class="form-control">
-                                                                        </div>
-
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                                                                            <button type="submit" class="btn btn-success editar" name="guardar">Guardar cambios</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                              
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Modal delete-->
-                                                    <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                    aria-hidden="true">
-                                                        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-                                                            <!--Content-->
-                                                            <div class="modal-content text-center">
-                                                            <!--Header-->
-                                                            <div class="modal-header d-flex justify-content-center bg-danger">
-                                                                <p class="heading text-light fs-5">Desea borrar a este usuario?</p>
-                                                            </div>
-
-                                                            <!--Body-->
-                                                            <div class="modal-body">
-
-                                                                <i class="fas fa-times fa-4x animated rotateIn"></i>
-
-                                                            </div>
-
-                                                            <!--Footer-->
-                                                            <div class="modal-footer flex-center">
-                                                                <button type="submit" class="btn btn-outline-danger destroy" data-dismiss="modal">Si</button>
-                                                                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</button>
-                                                            </div>
-                                                            </div>
-                                                            <!--/.Content-->
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
-                                                <span class="text-danger">*Recuerda generar los certficados de los
-                                                    alumnos
-                                                    con status finalizado</span>
+                <?php if ($user_type == 'maestro') {?>
+                    <div class="card shadow m-auto" id="card-alumn">
+                        <div class="card-container">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-secondary">Alumnos</h6>
+                            </div>
+                            <!-- Table -->
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                        <div class="row">
+                                            <!-- Show students in tables -->
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="dataTables_length" id="dataTable_length"><label>Mostrar<select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+                                                            <option value="10">10</option>
+                                                            <option value="25">25</option>
+                                                        </select></label></div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <div id="dataTable_filter" class="dataTables_filter"><label>Buscar
+                                                        alumno:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label></div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Páginas</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                                    <li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">siguiente</a></li>
-                                                </ul>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <!-- Start section table information -->
+                                                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
+                                                                <span class="text-black">Id</span>
+                                                            </th>
+                                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
+                                                                <span class="text-black">Nombre</span>
+                                                            </th>
+                                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
+                                                                <span class="text-black">Curso</span>
+                                                            </th>
+                                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
+                                                                <span class="text-black">Status</span>
+                                                            </th>
+                                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 185px;">
+                                                                <span class="text-black">Acciones</span>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <!-- Start section dates -->
+                                                    <tbody>
+                                                        <?php
+                                                            $alumnos = "SELECT * FROM alumnos";
+                                                            $resul = mysqli_query($conexion, $alumnos);
+
+                                                            while ($mostrar = mysqli_fetch_array($resul)) {
+                                                        ?>
+                                                            <tr class="odd">
+                                                                <td class="sorting_1">
+                                                                    <p class="name text"> <?php echo $mostrar['id'] ?> </p>
+                                                                </td>
+                                                                <td class="sorting_1">
+                                                                    <p class="name text"> <?php echo $mostrar['nombre'] ?> </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="cruso-p">
+                                                                        <?php echo $mostrar['curso'] ?>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="certificate">
+                                                                        <?php echo $mostrar['status'] ?>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="btn-cont d-flex justify-content-center">
+                                                                        <button class="btn btn-primary m-1 update"
+                                                                            data-id="<?php echo $mostrar['id'] ?>"
+                                                                            data-nombre="<?php echo $mostrar['nombre'] ?>"
+                                                                            data-curso="<?php echo $mostrar['curso'] ?>"
+                                                                            data-status="<?php echo $mostrar['status'] ?>" data-toggle="modal" data-target="#exampleModal">
+                                                                            <i class="fa-solid fa-file-pen"></i>
+                                                                        </button>
+                                                                        <button class="btn btn-danger m-1 btnEliminar"
+                                                                            data-id="<?php echo $mostrar['id'] ?>"
+                                                                            data-toggle="modal" data-target="#modalConfirmDelete">
+                                                                            <i class="fa-solid fa-trash"></i>
+                                                                        </button>
+                                                                        <a href="../fpdf/reporteAlumnos.php" target="_blank" class="btn btn-warning m-1 pdf">
+                                                                            <i class="fa-solid fa-print"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+
+                                                        <?php
+}
+    ?>
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Actualizar datos: Alumnos</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form class="form" method="post" action="../../php/editarAlumnos.php">
+                                                                            <input type="hidden" name="id" id="idEditar">
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Nombre</label>
+                                                                                <input type="text" name="nombre" id="update_name" class="form-control">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Curso</label>
+                                                                                <input type="text" name="curso" id="update_curso" class="form-control">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Status</label>
+                                                                                <input type="text" name="status" id="update_status" class="form-control">
+                                                                            </div>
+
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                                                                <button type="submit" class="btn btn-success editar" name="guardar">Guardar cambios</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Modal delete-->
+                                                        <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                            <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                                                                <!--Content-->
+                                                                <div class="modal-content text-center">
+                                                                <!--Header-->
+                                                                <div class="modal-header d-flex justify-content-center bg-danger">
+                                                                    <p class="heading text-light fs-5">Desea borrar a este usuario?</p>
+                                                                </div>
+
+                                                                <!--Body-->
+                                                                <div class="modal-body">
+
+                                                                    <i class="fas fa-times fa-4x animated rotateIn"></i>
+
+                                                                </div>
+
+                                                                <!--Footer-->
+                                                                <div class="modal-footer flex-center">
+                                                                    <button type="button" class="btn btn-outline-danger eliminar" data-dismiss="modal">Si</button>
+                                                                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</button>
+                                                                </div>
+                                                                <!--/.Content-->
+                                                            </div>
+                                                        </div>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-5">
+                                                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
+                                                    <span class="text-danger">*Recuerda generar los certficados de los
+                                                        alumnos
+                                                        con status finalizado</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-7">
+                                                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                                                    <ul class="pagination">
+                                                        <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Páginas</a>
+                                                        </li>
+                                                        <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                                        <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                                        <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                                        <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                                                        <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                                                        <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                                                        <li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">siguiente</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -602,9 +560,7 @@ if (!isset($usuario)) {
                             </div>
                         </div>
                     </div>
-                </div>
-
-
+                <?php }?>
                 <!-- Section pryvacity -->
                 <div class="row gx-5 m-auto">
                     <!-- Privacy suggestions illustrated card-->
@@ -675,22 +631,43 @@ if (!isset($usuario)) {
     <script src="../../assets/Js/jquery.min.js"></script>
     <script src="../../assets/Js/bootstrap.bundle.min.js"></script>
 
-                                                    
+
     <script>
         $(document).ready(function(){
             // Variables
             var idEditar = -1;
-            var idEliminar = -1;
+    
             var fila;
+            var idEliminar = -1;
 
             // Functions
-            $(".btnEliminar").click(function(){
-                idEliminar = $(this).data('id');
-                fila = $(this).parent('td').parent('tr');
+            $(".btnEliminar").click(function(event){
+                event.preventDefault();
+                 idEliminar =$(this).data('id');
+                // $.ajax({
+                //     url: '../../php/eliminar.php',
+                //     method: 'POST',
+                //     data: {
+                //         id: id
+                //     }
+                // }).done(function(respuesta){
+
+                // });
             });
-            $(".destroy").click(function(){
-                console.log('90')
-                // $(fila).fadeOut(1000);
+            $(".eliminar").click(function(){
+                var button = $(this);
+                $.ajax({
+                    url: '../../php/eliminar.php',
+                    method: 'POST',
+                    data: {
+                        id: idEliminar
+                    }
+                }).done(function(res){
+                   // alert(res)
+                    $(button).parent('div').parent('td').parent('tr').fadeOut(1000);
+                    location.reload()
+                });
+
             });
 
             $(".update").click(function(){
@@ -705,7 +682,7 @@ if (!isset($usuario)) {
                 $("#idEditar").val(idEditar);
             });
         });
-        
+
     </script>
 </body>
 

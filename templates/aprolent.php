@@ -1,13 +1,12 @@
 <?php
-    // Called BD
-    include(".././php/connection.php");
-    session_start();
-    
+// Called BD
+include ".././php/connection.php";
+session_start();
 
-    if (!isset($_SESSION['admin_name'])) {
-        # code...
-        header('../register and login/login.php');
-    }
+if (!isset($_SESSION['admin_name'])) {
+    # code...
+    header('../register and login/login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +38,8 @@
     <!-- Container father -->
     <div class="container-box d-flex flex-column">
            <!-- Header section -->
-        <?php 
-            include('../components/HeaderAprolent.php');
+        <?php
+            include '../components/HeaderAprolent.php';
         ?>
 
         <!-- Carousel -->

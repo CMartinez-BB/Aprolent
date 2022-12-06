@@ -18,9 +18,11 @@ if (isset($_POST['registro'])) {
 
         if ($row['nivel'] == 'maestro') {
             $_SESSION['admin_name'] = $row ['nombre'];
+            $_SESSION['email'] = $row ['email'];
             $_SESSION['rol'] = $row ['nivel'];
             header('location: ../admin/admin.php');
         } else if ($row['nivel'] == 'aprendiz') {
+            $_SESSION['rol'] = $row ['nivel'];
             $_SESSION['admin_name'] = $row ['nombre'];
             header('location: ../aprolent.php');
         }else{
@@ -28,10 +30,9 @@ if (isset($_POST['registro'])) {
             
         }
     }else{
-        header('location: ../register and login/register.php');
+        // header('location: ../register and login/register.php');
     }
-    
-    
+       
 }
 ?>
 
@@ -91,13 +92,8 @@ if (isset($_POST['registro'])) {
                         </div>
                     </div>
                     <!-- Card body -->
-                    <div class="card-body">
+                    <div class="card-body">                        
                         <form action="" method="POST" role="form" class="text-start">
-                            <?php
-                            if (!empty($message)) {
-                                echo '<span>' . $message . '</span>';
-                            }
-                            ?>
                             <div class="data-input my-3">
                                 <input type="email" name="email" required>
                                 <label>Email</label>
@@ -113,6 +109,9 @@ if (isset($_POST['registro'])) {
                             <a href="../register and login/register.php" class="mt-1 text-center text-sm count mb-1">No tienes cuenta aún?</a>
                         </form>
                     </div>
+                    <?php
+                       echo  $message;
+                    ?>
                 </div>
             </div>
         </div>
